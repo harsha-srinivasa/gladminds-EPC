@@ -1,0 +1,18 @@
+{
+    "brand": "Bajaj",
+    "bg_color" : "url(../../img/mc_bg.jpg)repeat",
+    "font_color" : "#FFF",
+    "legend": [
+        {
+            "option_name": "Plates Index",
+            "option_ID" : "dashboard"
+        },{
+            "option_name": "Notice Board",
+            "option_ID" : "notice_board"
+        },{
+            "option_name": "Circulars",
+            "option_ID" : "circulars"
+        }
+    ]
+
+}

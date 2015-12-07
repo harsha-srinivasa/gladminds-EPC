@@ -1,0 +1,8 @@
+{
+    "brand": "Bajaj",
+    "bg_color" : "url(../../img/mc_bg.jpg)repeat",
+    "font_color" : "#FFF",
+    "legend": [
+    ]
+
+}

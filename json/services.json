@@ -1,0 +1,81 @@
+{
+    "brand": "Bajaj",
+    "brand_logo" : "../img/Bajaj_Logo.png",
+    "type": "landing",
+    "list_img" : "arrow_img_path.png",
+    "legends": [
+        {
+            "option_name": "Motorcycles",
+            "option_code": "mc",
+            "className":"bajaj-bv-motorcycles",
+            "background": "",
+            "border" : "",
+            "img_path" : "../img/mc_bg2.jpg",
+            "font_color":  "",
+            "url":[
+            	{
+            		"name":"Digital Free Service Coupon",
+            		"href":"#"
+            	},
+            	{
+            		"name":"Dealership Service Standards",
+            		"href":"#"
+            	},
+                {
+                    "name":"Electronic Parts Catalogue",
+                    "href":"mc/"
+                }]
+        },
+		{
+            "option_name": "Commercial vehicle",
+            "option_code": "cv",
+            "className":"bajaj-bv-commercialVehicle",
+            "background": "",
+            "border" : "",
+            "img_path" : "../img/cv_bg2.jpg",
+            "font_color":  "",
+            "url":[
+                {
+                    "name":"Partsmart",
+                    "href":"#"
+                },
+            	{
+            		"name":"Loyalty",
+            		"href":"#"
+            	},
+            	
+            	{
+            		"name":"Electronic Parts Catalogue",
+            		"href":"cv/"
+            	}]
+        },
+		{
+            "option_name": "International Business",
+            "option_code": "ib",
+            "className":"bajaj-bv-internaltionBusiness",
+            "background": "",
+            "border" : "",
+            "img_path" : "../img/ib_bg2.png",
+            "font_color":  "",
+            "url":[
+            	{
+            		"name":"Electronic Parts Catalogue",
+            		"href":"#"
+            	}]
+        },
+		{
+            "option_name": "Probiking",
+            "option_code": "pb",
+            "className":"bajaj-bv-probiking",
+            "background": "",
+            "border" : "",
+            "img_path" : "../img/pb_bg2.jpg",
+            "font_color":  "",
+            "url":[
+            	{
+            		"name":"Electronic Parts Catalogue",
+            		"href":"pb/"
+            	}]
+        }
+    ]
+}

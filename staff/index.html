@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from themes.startbootstrap.com/flex-admin-v1.2/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2015 07:11:45 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bajaj - EPC</title>
+
+    <!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
+    <link href="../css/plugins/pace/pace.css" rel="stylesheet">
+    <script src="../js/plugins/pace/pace.js"></script>
+
+    <!-- GLOBAL STYLES - Include these on every page. -->
+    <link href="../css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href="../icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="../css/plugins/dropzone/css/dropzone.css" rel="stylesheet">
+    <link href="../css/plugins/bootstrap-datepicker/datepicker3.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/breadcrumb.css">
+ 
+    <!-- THEME STYLES - Include these on every page. -->
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/epc-style.css" rel="stylesheet">
+    <link href="css/staff.css" rel="stylesheet">
+    <link href="../css/plugins.css" rel="stylesheet">
+
+    <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+    <link href="../css/demo.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- begin TOP NAVIGATION -->
+        <nav class="navbar-top" role="navigation">
+
+            <!-- begin BRAND HEADING -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <i class="fa fa-bars"></i> Menu
+                </button>
+                <div class="navbar-brand">
+                    <img src="../img/logo.png" class="img-responsive" alt="">
+                </div>
+            </div>
+            <!-- end BRAND HEADING -->
+
+            <div class="nav-top">
+
+                <!-- begin LEFT SIDE WIDGETS -->
+                <ul class="nav navbar-left">
+                    <li class="tooltip-sidebar-toggle">
+                        <a href="#" id="sidebar-toggle" data-toggle="tooltip" data-placement="right" title="Sidebar Toggle">
+                            <i class="fa fa-bars bajaj-slide-menu"></i>
+                        </a>
+                    </li>
+                    <!-- You may add more widgets here using <li> -->
+                </ul>
+                <!-- end LEFT SIDE WIDGETS -->
+
+                <!-- begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+                <ul class="nav navbar-right">
+                </ul>
+                <!-- /.nav -->
+                <!-- end MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+            </div>
+
+            <!-- /.nav-top -->
+        </nav>
+        <!-- /.navbar-top -->
+        <!-- end TOP NAVIGATION -->
+
+        <!-- begin SIDE NAVIGATION -->
+        <nav class="navbar-side" role="navigation">
+            <div class="navbar-collapse sidebar-collapse collapse">
+                <ul id="side" class="nav navbar-nav side-nav"></ul>
+                <!-- /.side-nav -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- /.navbar-side -->
+        <!-- end SIDE NAVIGATION -->
+
+        <!-- begin MAIN PAGE CONTENT -->
+        <div id="page-wrapper">
+
+            <div class="page-content">
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row page-header-row">
+                    <div class="col-lg-12 header">
+                        <div class="page-title">
+                            <h1> Electronic Parts Catelogue </h1>
+                            <ol class="crumbs breadcrumb" id="breadcrumb"></ol>
+                        </div>
+                    </div><!-- /.col-lg-12 -->
+                </div>
+                <div class="portlet portlet-default my-content">
+                    <div class="tab-content">
+                        <div id="sectionA" class="tab-pane fade in active">
+                            <div id="userTabContent" class="tab-content">
+                                <div id="overview">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-3">
+                                            <a href="#">
+                                                <span class="profile-edit" id="model_img-btn">Edit</span>
+                                            </a>
+                                            <img id='demo-model-img' class="img-responsive img-profile" src="../img/profile/pfl_11.jpg" alt="">
+                                            <input type="file" name = 'modelImage'  id="model_img" accept="image/*" onChange="showMyImage(this)" style="display:none;">
+
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <form role="form">
+                                                <div class="form-group col-sm-5">
+                                                    <label for="vertical_name">Select Vertical</label>
+                                                    <select id="vertical_name" name= 'model' class="form-control">
+                                                        <option rel="">--Select Vertical--</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>Select Models</label>
+                                                    <select id="add_model" name= 'model' class="form-control">
+                                                        <option rel="">--Select Models--</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>SKU Code</label>
+                                                    <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="" disabled>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>Bom Number</label>
+                                                    <input type="text" name="bomNumber" id="bomNum" class="form-control" value="" disabled>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>ECO Implemented</label>
+                                                    <select id="eco_imp" name= 'plateId' class="form-control">
+                                                        <option rel="">0</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>ECO Release</label>
+                                                    <select id="eco_rel" name= 'plateId' class="form-control">
+                                                        <option rel="">0</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-sm-5">
+                                                    <label>Plates</label>
+                                                    <select id="plateId" name= 'plateId' class="form-control" multiple>
+                                                        <option rel="">--Select Plates--</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- begin DROPZONE UPLOADER ROW -->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="portlet portlet-default dropzone-portlet">
+                                                <div class="portlet-heading col-lg-12">
+                                                    <div class="portlet-title col-lg-6">
+                                                        <h4>Upload CSV File and Plate Images</h4>
+                                                    </div>
+                                                    <div class="portlet-title col-lg-6" style="text-align:right;">
+                                                        <button class="btn btn-success" id="submit-all">Submit all files</button>
+                                                        <button class="btn btn-red" id="remove_all">Remove all files</button>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="portlet-body" id='drop_area'>
+                                                    <form action="../apis/get_user_details.php?action=get_files" enctype="multipart/form-data" class="dropzone"  id="my-awesome-dropzone"></form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.col-lg-12 -->
+                                    </div><!-- /.row --><!-- end DROPZONE UPLOADER ROW -->
+                                </div>
+                            </div>
+                        </div>    <!--SectionA-->
+                        <div id="sectionD" class="tab-pane fade">
+                            <div id="userTabContent" class="tab-content">
+                                <div id="overview">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Model Name</label>
+                                                <select id="vertical_name" name= 'model' class="form-control">
+                                                    <option rel="">--Select Model Name--</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Model Category</label>
+                                                <select id="vertical_name" name= 'model' class="form-control">
+                                                    <option rel="">--Select Model Category--</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Date & Time</label>
+                                                <div class="input-append bootstrap-timepicker input-group">
+                                                    <input id="timepicker1" class="form-control" type="text">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default add-on" type="button">
+                                                            <i class="fa fa-clock-o"></i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Notice Title</label>
+                                                <input type="text" name="notice-title" class="form-control" id="" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Notice Image</label>
+                                                <input type="file" name="notice-image" class="form-control" id="" value="">
+                                            </div>
+                                            <div class="col-sm-5">
+                                               <label for="vertical_name">Description</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div><br/><br/><br/><br/>
+                                           <div class="col-sm-12 submit-btn">
+                                               <button class="btn btn-success">Submit</button>
+                                           </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    <!--SectionD-->
+                        <div id="sectionC" class="tab-pane fade">
+                            <div id="userTabContent" class="tab-content">
+                                <div id="overview">
+                                    <div class="row">
+                                        <form role="form">
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Model Name</label>
+                                                <select id="vertical_name" name= 'model' class="form-control">
+                                                    <option rel="">--Select Model Name--</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Model Category</label>
+                                                <select id="vertical_name" name= 'model' class="form-control">
+                                                    <option rel="">--Select Model Category--</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Brand Header Color</label>
+                                                <input type="colorpicker" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Brand Footer Color</label>
+                                                <input type="colorpicker" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">ECO ID</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Service Circular ID</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Select </label>
+                                                <select id="vertical_name" name= 'model' class="form-control">
+                                                    <option rel="">Product</option>
+                                                    <option rel="">Warranty</option>
+                                                    <option rel="">Process</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">From</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">TO</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">CC</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Subject</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="col-sm-5">
+                                               <label for="vertical_name">Note-1</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div>
+                                            <div class="col-sm-5">
+                                               <label for="vertical_name">Note-2</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Model name for which the circular is being published</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Applicable VIN/CHASSIS Number</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Product Type</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Group name</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Part change (serviceable parts)</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Bulletin Type</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="form-group col-sm-5">
+                                                <label for="vertical_name">Bulletin ID</label>
+                                                <input type="text" name="skuCode" class="form-control" id="add-plate-sku" value="">
+                                            </div>
+                                            <div class="col-sm-5">
+                                               <label for="vertical_name">Description</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div>
+                                           <div class="form-group col-sm-5">
+                                               <label for="vertical_name">Upload PdF File</label>
+                                               <input type="file" name = 'modelImage'  id="model_img" accept="image/*">
+                                           </div>
+                                           <div class="form-group col-sm-5">
+                                               <label for="vertical_name">Date & Time</label>
+                                               <div class="input-append bootstrap-timepicker input-group">
+                                                   <input id="timepicker1" class="form-control" type="text">
+                                                   <span class="input-group-btn">
+                                                       <button class="btn btn-default add-on" type="button">
+                                                           <i class="fa fa-clock-o"></i></button>
+                                                   </span>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-5">
+                                               <label for="vertical_name">Thanking you section and signature attached</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div>
+                                            <div class="col-sm-5">
+                                               <label for="vertical_name">Footer Section</label>
+                                               <textarea id="textareaMax" class="form-control" maxlength="225" rows="5" placeholder="Description"></textarea>
+                                           </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    <!--SectionB-->
+                        <div id="sectionB" class="tab-pane fade">
+                            <div class="portlet-body">
+                                <div id="userTabContent" class="tab-content">
+                                    <div id="overview">
+                                        <div class='row'>   
+                                            <div class="table-responsive">
+                                                <table id="table" class="table table-striped table-bordered table-hover table-een">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Model Name</th>
+                                                            <th>SKU Code</th>
+                                                            <th>Created Date</th>
+                                                            <th>Model Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="odd gradeX">
+                                                            <a href="#">
+                                                                <td>Pulsar 220</td>
+                                                                <td>1234550</td>
+                                                                <td>12-10-2015</td>
+                                                                <td class="center">
+                                                                <div class="progress" data-toggle="tooltip" title="Remaining(20)">
+                                                                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:60%" data-toggle="tooltip" data-placement="top" title="Published (60)">
+                                                                    </div>
+                                                                    <div data-toggle="tooltip" data-placement="top" class="progress-bar progress-bar-warning" role="progressbar" style="width:20%" title="Pending(20)">
+                                                                    </div>
+                                                                </div>
+
+                                                                </td>
+                                                            </a>
+                                                        </tr>
+                                                        <tr class="odd gradeX">
+                                                            <td>Avenger</td>
+                                                            <td>1234550</td>
+                                                            <td>12-02-2015</td>
+                                                            <td class="center">
+                                                                <div class="progress" data-toggle="tooltip" title="Remaining(10)">
+                                                                    <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%" data-toggle="tooltip" data-placement="top" title="Published (40)">
+                                                                    </div>
+                                                                    <div data-toggle="tooltip" data-placement="top" class="progress-bar progress-bar-warning" role="progressbar" style="width:10%" title="Pending(10)">
+                                                                    </div>
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    <!--SectionB-->
+                    </div>    
+                </div>
+            </div>
+            <!-- /.page-content -->
+
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- end MAIN PAGE CONTENT -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- GLOBAL SCRIPTS -->
+    <script src="../js/jquery/jquery.min.js"></script>
+    <script src="../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+    <script src="../js/plugins/popupoverlay/defaults.js"></script>
+    <script src="../js/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+
+    <script src="../js/inc/inc.js"></script>
+    <script src="js/staff.js"></script>
+    <script src="js/staff_sideMenu.js"></script>
+    <script src="js/version.js"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Select "Logout" below if you are ready
+    to end your current session.</h4>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="btn btn-success">Logout</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="plates" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you Sure you want to accept the selected plates</h4>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="yes btn btn-success">Yes</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+          <div class="modal-body" id="logout-modal-img">
+            <h4 class="modal-title" id="myModalLabel">Are you sure you want to reject the selected plates</h4>
+            <textarea id="textareaMax" class="form-control" maxlength="225" rows="2" placeholder="Reason for Rejection"></textarea>
+          </div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="yes btn btn-success">Yes</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Notification jQuery -->
+    <script src="../js/plugins/popupoverlay/logout.js"></script>
+    <!-- HISRC Retina Images -->
+    <script src="../js/plugins/hisrc/hisrc.js"></script>
+
+    <!-- PAGE LEVEL PLUGIN SCRIPTS -->
+    <script src="../js/plugins/dropzone/dropzone.js"></script>
+
+
+    <!-- THEME SCRIPTS -->
+    <script src="../js/flex.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            Dropzone.autoDiscover = false;
+            $('#my-awesome-dropzone').dropzone({
+                acceptedFiles : 'image/*',
+                maxFiles: 51,
+                maxFilesize: 0.05, // MB
+                uploadMultiple: true,
+                autoProcessQueue:false,
+                addRemoveLinks: true, 
+                parallelUploads : 50,
+                maxfilesexceeded: function(file) {
+                    console.log('excedded');
+                },
+                maxfileexceeded: function(file) {
+                    console.log('excedded');
+                },
+
+                sending: function(file, xhr, formData) {
+                    formData.append("_token", 'harsha');
+                },
+
+                init: function() {
+                    var submitButton = document.querySelector("#submit-all")
+                    var removeButton = document.querySelector("#remove_all")
+                    var that = this;
+                    submitButton.addEventListener("click", function() {
+                       that.processQueue();
+                    });
+                    removeButton.addEventListener("click", function() {
+                       that.removeAllFiles();
+                    });
+                },
+            });
+
+            $('#logout-user').click(function () {
+                logout_user("../apis/get_user_details.php?action=logout_user");
+            });
+        });
+    </script>
+
+</body>
+
+
+<!-- Mirrored from themes.startbootstrap.com/flex-admin-v1.2/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2015 07:11:46 GMT -->
+</html>

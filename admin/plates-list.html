@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from themes.startbootstrap.com/flex-admin-v1.2/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2015 07:11:45 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+
+    <!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
+    <link href="../css/plugins/pace/pace.css" rel="stylesheet">
+    <script src="../js/plugins/pace/pace.js"></script>
+
+    <!-- GLOBAL STYLES - Include these on every page. -->
+    <link href="../css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href="../icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="../css/plugins/datatables/datatables.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../css/breadcrumb.css">
+ 
+    <!-- THEME STYLES - Include these on every page. -->
+    <link href="../staff/css/style.css" rel="stylesheet">
+    <link href="../css/plugins.css" rel="stylesheet">
+
+    <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+    <link href="../css/demo.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+    <style>
+/*
+        .navbar-brand { padding:3px 15px;}
+        .navbar-top { background:#FFF; border-bottom:1px solid #CCC;position:fixed; width:100%; z-index:999; }
+        #sidebar-toggle {color:rgb(52, 73, 94); }
+        #page-wrapper { border:1px solid #CCC; }
+        .page-title { margin:-14px auto; margin-bottom:15px; color:#FFF; }
+        .page-title h1 { margin-left: 30px; font-size:22px; line-height:3.2; }
+        .header {height:45px; position:fixed; width:100%; z-index:9;  }
+        #profile_img { margin:0; width:100%; }
+        .navbar-side .side-user .name { color:#000; }
+        .modal-content { background:rgba(26,36,47,0.9); color:#FFF; }
+
+        .modal-footer { text-align:center;}
+        #logout_window_img {  margin:0 auto; border-radius:75px;}
+        .footer { background:#FFF; font-size:10px; text-align:center; }
+        #drop_area { overflow-y:scroll; height:475px; }
+        .side_tabs a:hover { background:#000 !important; }
+        @media (min-width: 768px) {
+            #page-wrapper {
+                padding: 0 15px;
+                min-height : 600px;
+            }
+            .navbar-top .navbar-header {
+                width: 205px;
+            }
+        }
+        #side { position:fixed; border:none;}
+        #side .side-user { border:none; }
+
+        .side_tabs.active { background:#000 !important; }
+
+
+
+
+
+
+
+
+
+        .mc-plates-footer {text-align:center; }
+        #table thead { background: #2980b9; color:#FFF; }
+        #table thead th, #table thead td{ text-align:center; }
+
+        .plates-table thead tr{ background:#34495e; }
+        #table_paginate a { border:1px solid #CCC; padding :5px 5px 5px 5px;margin-left:5px; }
+        #table_paginate { margin:10px auto; }
+        .btn-area { text-align:right; }
+*/
+        #wrapper, #page-wrapper, .page-title .breadcrumb { background:#FFF; }
+        .page-title {margin:0px 0;}
+        .page-title h1 { background:blue; padding:10px 10px 10px 10px; }
+        .navbar-top{background:#FFF; border-bottom:1px solid #000; position:fixed;width:100%; z-index:999;}
+        .breadcrumb>li+li:before { content:none;}
+        .header { position:fixed; width:100%; background:#FFF; z-index:99; padding:0px; margin-left:15px; }
+        .my-content { margin:123px 10px 10px 10px; border:1px solid #000; }
+        #side { position:fixed; overflow:hidden;}
+        #page-wrapper { padding:0; }
+        #breadcrumb { margin-left:23px; margin-top:0; margin-bottom:0;  }
+        #side li { margin:0; }
+        .navbar-side .side-user img { margin:0;}
+        #logout_window_img { height:200px; margin:0 auto; border-radius:100px; }
+        .confirm-log-btns { text-align:center; }
+
+        @media (max-width: 480px) {
+
+        }
+
+        @media (max-width: 600px) {
+        }
+
+
+        @media(max-width:768px) {
+            .header { 
+                margin-top:120px;
+            }
+            .my-content { margin:243px 10px 10px 10px;}
+        }
+        
+        
+    </style>
+    <div id="wrapper">
+        <!-- begin TOP NAVIGATION -->
+        <nav class="navbar-top" role="navigation">
+
+            <!-- begin BRAND HEADING -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <i class="fa fa-bars"></i> Menu
+                </button>
+                <div class="navbar-brand">
+                    <img src="../staff/Bajaj_Logo.png" class="img-responsive" alt="">
+                </div>
+            </div>
+            <!-- end BRAND HEADING -->
+
+            <div class="nav-top">
+
+                <!-- begin LEFT SIDE WIDGETS -->
+                <ul class="nav navbar-left">
+                    <li class="tooltip-sidebar-toggle">
+                        <a href="#" id="sidebar-toggle" data-toggle="tooltip" data-placement="right" title="Sidebar Toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <!-- You may add more widgets here using <li> -->
+                </ul>
+                <!-- end LEFT SIDE WIDGETS -->
+
+                <!-- begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+                <ul class="nav navbar-right">
+                    <li><a href="../services/index.html">
+                        <img src="../img/home.png" alt="Home" class="img-responsive pull-right go-home-btn"></a>
+                    </li>
+                </ul>
+                <!-- /.nav -->
+                <!-- end MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+            </div>
+
+            <!-- /.nav-top -->
+        </nav>
+        <!-- /.navbar-top -->
+        <!-- end TOP NAVIGATION -->
+
+        <!-- begin SIDE NAVIGATION -->
+        <nav class="navbar-side" role="navigation">
+            <div class="navbar-collapse sidebar-collapse collapse">
+                <ul id="side" class="nav navbar-nav side-nav"></ul>
+                <!-- /.side-nav -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- /.navbar-side -->
+        <!-- end SIDE NAVIGATION -->
+
+        <!-- begin MAIN PAGE CONTENT -->
+        <div id="page-wrapper">
+
+            <div class="page-content">
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row page-header-row">
+                    <div class="col-lg-12 header">
+                        <div class="page-title">
+                            <h1> Electronic Parts Catelogue </h1>
+                            <ol class="crumbs breadcrumb" id="breadcrumb"></ol>
+                        </div>
+                    </div><!-- /.col-lg-12 -->
+                </div>
+                <div class="portlet portlet-default my-content">
+                            <div class="portlet-body">
+                                <ul id="userTab" class="nav nav-tabs">
+                                    <li class="active"><a href="#overview" data-toggle="tab">Overview</a>
+                                    </li>
+                                    <li><a href="#profile-settings" data-toggle="tab">Update Profile</a>
+                                    </li>
+                                </ul>
+                                <div id="userTabContent" class="tab-content">
+                                    <div class="tab-pane fade in active" id="overview">
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-3">
+                                                <a href="#">
+                                                    <span class="profile-edit">Edit</span>
+                                                </a>
+                                                <img class="img-responsive img-profile" src="img/profile-full.jpg" alt="">
+                                                <div class="list-group">
+                                                    <a href="#" class="list-group-item active">Overview</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-7 col-md-5">
+                                                <h1>John Smith</h1>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam placerat nunc ut tellus tristique, non posuere neque iaculis.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="profile-settings">
+
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <ul id="userSettings" class="nav nav-pills nav-stacked">
+                                                    <li class="active"><a href="#basicInformation" data-toggle="tab"><i class="fa fa-user fa-fw"></i> Basic Information</a>
+                                                    </li>
+                                                    <li><a href="#profilePicture" data-toggle="tab"><i class="fa fa-picture-o fa-fw"></i> Profile Picture</a>
+                                                    </li>
+                                                    <li><a href="#changePassword" data-toggle="tab"><i class="fa fa-lock fa-fw"></i> Change Password</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.portlet-body -->
+                        </div>
+            </div>
+            <!-- /.page-content -->
+
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- end MAIN PAGE CONTENT -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- GLOBAL SCRIPTS -->
+    <script src="../js/jquery/jquery.min.js"></script>
+    <script src="../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+    <script src="../js/plugins/popupoverlay/defaults.js"></script>
+
+    <script src="../js/inc/inc.js"></script>
+    <script src="js/plates-list.js"></script>
+    <script src="js/admin_sideMenu.js"></script>
+    <script src="js/version.js"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Select "Logout" below if you are ready
+    to end your current session.</h4>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="btn btn-success">Logout</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="plates" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="accept" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you Sure you want to accept the selected plates</h4>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="yes btn btn-success">Yes</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="reject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+          <div class="modal-body" id="logout-modal-img">
+            <h4 class="modal-title" id="myModalLabel">Are you sure you want to reject the selected plates</h4>
+            <textarea id="textareaMax" class="form-control" maxlength="225" rows="2" placeholder="Reason for Rejection"></textarea>
+          </div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="yes btn btn-success">Yes</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Notification jQuery -->
+    <script src="../js/plugins/popupoverlay/logout.js"></script>
+    <!-- HISRC Retina Images -->
+    <script src="../js/plugins/hisrc/hisrc.js"></script>
+
+    <!-- PAGE LEVEL PLUGIN SCRIPTS -->
+    <script src="../js/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../js/plugins/datatables/datatables-bs3.js"></script>
+
+
+    <!-- THEME SCRIPTS -->
+    <script src="../js/flex.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#table').dataTable({
+            });
+            $('#accept_btn').click(function(e) {
+                $('#accept').modal('show');
+            });
+            $('#reject_btn').click(function(e) {
+            console.log('sss');
+                $('#reject').modal('show');
+            });
+
+            $('#select_all_models').change ( function ( ) {
+                if ( $('#select_all_models').prop('checked') ) {
+                    $(this).parents('table').find('.models').prop('checked', true);
+                } else {
+                    $(this).parents('table').find('.models').prop('checked', false);
+                }
+            });
+
+            $('.view').click(function() {
+                $('#plates').modal('show');
+            });
+            
+            $('.yes').click(function() {
+                $('#accept').modal('hide');
+                $('#reject').modal('hide');
+            });
+
+            $('.dataTables_filter input').attr("placeholder", "Plates search...");
+        });
+    </script>
+
+</body>
+
+
+<!-- Mirrored from themes.startbootstrap.com/flex-admin-v1.2/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2015 07:11:46 GMT -->
+</html>

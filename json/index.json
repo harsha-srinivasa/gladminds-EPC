@@ -1,0 +1,12 @@
+{
+	"brand" : "Bajaj Auto Limited",
+	"version_no" : "1.0.0",
+	"GCP_build_no" : "1.0.0",
+	"product":"Bajaj One App",
+	"domain_name" : "bajajauto.co.in",
+	"logo_url":"img/Bajaj_Logo.png",
+	"page_background" : "#FFF",
+	"user_register":"0",
+	"header_color" : "#1C92C5",
+	"footer_color" : "#1C92C5"
+}

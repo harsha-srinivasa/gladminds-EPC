@@ -1,0 +1,58 @@
+{
+    "brand": "Bajaj",
+    "models": [
+        {
+            "model_name": "Pulsar",
+            "sku_code": "123456",
+            "bom_number": "93748",
+            "created_date": "01-03-2015",
+            "plate_status" : [
+                { 
+                    'published' : '10',
+                    'Pending'   : '10',
+                    'Remaining' : '10',
+                }
+            ]
+        },
+        {
+            "model_name": "Avenger",
+            "sku_code": "239428",
+            "bom_number": "294775",
+            "created_date": "01-03-2015",
+            "plate_status" : [
+                { 
+                    'published' : '10',
+                    'Pending'   : '10',
+                    'Remaining' : '10',
+                }
+            ]
+        },
+        {
+            "model_name": "Platina",
+            "sku_code": "923847",
+            "bom_number": "29847",
+            "created_date": "01-03-2015",
+            "plate_status" : [
+                { 
+                    'published' : '10',
+                    'Pending'   : '10',
+                    'Remaining' : '10',
+                }
+            ]
+        }
+        {
+            "model_name": "Discover",
+            "sku_code": "298347",
+            "bom_number": "23984",
+            "created_date": "01-03-2015",
+            "plate_status" : [
+                { 
+                    'published' : '10',
+                    'Pending'   : '10',
+                    'Remaining' : '10',
+                }
+            ]
+        }
+    ]
+
+}

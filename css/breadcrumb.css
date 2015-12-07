@@ -1,0 +1,90 @@
+/*
+ * Stylesheet to implement breadcrumb.
+ * ----------------------------------------------------------------------------------------
+ * Author: Akshay Kulshrestha
+ * Date Created: 13th March, 2015 
+ */
+
+
+#content {
+	padding:0 55px;
+}
+
+#breadcrumb,#breadcrumb2 {
+	float:left;
+	display:block;
+	margin-top:20px;
+	margin-bottom:15px;
+    margin-left:13px;
+	text-transform:uppercase;
+}
+
+#breadcrumb ul,#breadcrumb2 ul {
+	list-style:none;
+}
+
+.crumbs {
+	display:block;
+	padding-left:0px;
+}
+
+.crumbs li {
+	display:inline;
+}
+
+.crumbs li.first {
+	padding-left:8px;
+}
+
+.crumbs li a,.crumbs li a:link,.crumbs li a:visited {
+	color:#666;
+	display:block;
+	float:left;
+	font-size:14px;
+	margin-left:-13px;
+	position:relative;
+	text-decoration:none;
+	padding:6px 17px 11px 18px;
+}
+
+.crumbs li a {
+	background-image:url(../img/bg-crumbs.png);
+	background-repeat:no-repeat;
+	background-position:100% 0;
+	position:relative;
+}
+
+.crumbs li a:hover {
+	color:#333;
+	background-position:100% -48px;
+	cursor:pointer;
+}
+
+.crumbs li a:active {
+	color:#333;
+	background-position:100% -96px;
+}
+
+.crumbs li.first a span {
+	height:29px;
+	width:3px;
+	border-left:1px solid #d9d9d9;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+@media(max-width: 360px) {
+    .crumbs li a, .crumbs li a:link, .crumbs li a:visited {
+        padding: 6px 21px 9px 17px;
+    }
+}
+
+html[xmlns] .clearfix {
+	display:block;
+}
+
+* html .clearfix {
+	height:1%;
+}
+

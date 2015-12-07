@@ -1,0 +1,54 @@
+body{overflow-x:hidden;}
+#wrapper, #page-wrapper, .page-title .breadcrumb { background:#FFF; }
+.page-title {margin:0px 0;}
+.page-title h1 { background:#0A51A1; padding:10px 10px 10px 10px; color:#FFF; margin-bottom:0px; font-size:21px;}
+.navbar-top{background:#FFF; border-bottom:1px solid #CCC; position:fixed;width:100%; z-index:999;}
+.breadcrumb>li+li:before { content:none;}
+.header { position:fixed; width:100%; background:#FFF; z-index:99; padding:0px; margin-left:15px; border-bottom:1px solid #CCC;}
+.my-content { margin:123px 10px 10px 10px; border:none;}
+#side { position:fixed; overflow:hidden; border:none;}
+#side .side-user { border:none; }
+#page-wrapper { padding:0; min-height:600px;}
+#breadcrumb { margin-left:23px; margin-top:0; margin-bottom:0;  padding-bottom:0;}
+#side li { margin:0; text-align:center;}
+.navbar-side .side-user img { margin:0;}
+#logout_window_img { height:200px; margin:0 auto; border-radius:100px; }
+#logout-modal-img { text-align:center; }
+.confirm-log-btns { text-align:center; }
+#sidebar-toggle  .bajaj-slide-menu{ color:#0D53A2; }
+#profile_img { margin:0 auto; height:200px; }
+.user_name { color:#000 !important; }
+.modal-content { background:rgba(26,36,47,0.9); color:#FFF; }
+.navbar-brand {margin-top:-10px; }
+.bajaj-footer { font-size:10px; text-align:center; }
+.navbar-side .navbar-nav>li>a, .navbar-side .navbar-nav>li>a:focus, .navbar-side .navbar-nav>li>a:hover, .navbar-side .navbar-nav>li>a:active{
+    background:#0A51A1;
+}
+.navbar-side .navbar-nav>li>a:hover, .navbar-side .navbar-nav>li>a:active {
+    background:#000;
+}
+.navbar-side .navbar-nav>li.active  {
+    background:#000;
+}
+.portlet-default>.portlet-heading, .portlet-dark-blue>.portlet-heading {
+    background:#0A51A1;}
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 600px) {
+}
+
+
+@media(max-width:768px) {
+    .header {
+        margin-top:110px;
+    }
+    .my-content { margin:243px 10px 10px 10px;}
+    .sidebar-collapse #side { width:100%; z-index:80; margin-top:227px; position:relative;}
+    .sidebar-collapse #side li { background:#FFF }
+    
+}
+
