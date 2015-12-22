@@ -1,0 +1,19 @@
+body { overflow-x:hidden; }
+.page-content { min-height:570px; }
+.page-title h1{background:none; color:#000;}
+.menu-options-list { padding:0; }
+.menu-options-list li { list-style:none; }
+.bajaj-bv-motorcycles .portlet-heading { text-align:center;color:#FFF;background:url('../../img/mc_bg.jpg') repeat-x; }
+.bajaj-bv-commercialVehicle .portlet-heading { text-align:center;color:#FFF;background:url('../../img/cv_bg.png') repeat-x; }
+.bajaj-bv-probiking .portlet-heading { text-align:center;color:#FFF;background:url(../../img/pb_bg.png) repeat;}
+.bajaj-bv-internaltionBusiness .portlet-heading { text-align:center;color:#FFF;background:#000;}
+.portlet .portlet-body{min-height:130px; }
+
+.bajaj-bv-motorcycles .category-image,
+.bajaj-bv-commercialVehicle .category-image,
+.bajaj-bv-internaltionBusiness .category-image,
+.bajaj-bv-probiking .category-image{ min-height:120px;}
+.category-image { margin:0 auto; display:block; }
+
+
+

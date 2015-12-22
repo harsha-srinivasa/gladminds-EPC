@@ -1,0 +1,17 @@
+{
+    "brand": "Bajaj",
+    "product": "Electronic Parts Catalogue",
+    "category": "Notice Board",
+    "legend": [
+        {
+            "date": "11th September 2014",
+            "img_url": "1410430864_ktm_launch.jpg",
+            "description": "Bajaj Auto launched two supersport motorcycles on Tuesday from Austrian partner KTM's stable — RC 390 and RC 200"
+        },
+        {
+            "date": "9th August 2014",
+            "img_url": "1407528784_banner2.png",
+            "description": ""
+        }
+    ]
+}

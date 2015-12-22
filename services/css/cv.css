@@ -1,0 +1,24 @@
+.page-title h1 { background:url(../../img/cv_bg.png)repeat;}
+.page-content { min-height:470px;} 
+.coming-soon {  -webkit-transform: rotate(-45deg);transform: rotate(-45deg);background: #FF0000;
+                color: #FFFFFF; font-size: 10px;font-family: arial;left: -21px;padding: 0 15px;display: block;
+                position: absolute;top: 19px;
+             }
+.portlet .portlet-footer{text-align:center;background:url(../../img/cv_bg.png)repeat;color:#FFF;}
+.portlet .portlet-body { padding:0;}
+.auto-img-block{position:relative;overflow:hidden;}
+.auto-img-block img{margin:0 auto;}
+#pictorial_area .col-lg-3{padding-left:0px;}
+.plates-footer{text-overflow:ellipsis; white-space:nowrap;overflow:hidden;}
+#plate_search{
+    width: 98.5%;
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        margin-top: 107px;
+    }
+    #pictorial_area div.col-lg-3 { margin-bottom:70px; }
+}

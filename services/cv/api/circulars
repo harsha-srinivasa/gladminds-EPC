@@ -1,0 +1,38 @@
+{
+	"brand": "Bajaj",
+    "product": "Electronic Parts Catalogue",
+    "category": "Circulars",
+    "legend" : [
+    	{
+    		"data_id" : "1",
+    		"product_type" : "3700 NS",
+    		"group_name" : "Pulsar 200NS V1",
+    		"bulletin_type" : "Product Bulletin",
+    		"bulletin_id" : "B12",
+    		"bulletin_desc" : "Pulsar 200NS Owners Manual",
+    		"plates" : "N.A.",
+    		"date" : "18-08-2014",
+    		"moreinfo" : "1407672871_Bajaj-Pulsar-200NS-Owners Manual.pdf"
+    	},{
+    		"data_id" : "2",
+    		"product_type" : "3200",
+    		"group_name" : "Discover 100ES V0.5",
+    		"bulletin_type" : "Service Bulletin",
+    		"bulletin_id" : "A18",
+    		"bulletin_desc" : "Introduction of Discover 100 ES with Spoke Wheels",
+    		"plates" : "Spoke Wheels",
+    		"date" : "16-08-2014",
+    		"moreinfo" : "1407612126_A-18-Introduction of Discover 100 ES with Spoke Wheels.pdf"
+    	},{
+    		"data_id" : "3",
+    		"product_type" : "3200",
+    		"group_name" : "Discover 100ES V0.5",
+    		"bulletin_type" : "Service Bulletin",
+    		"bulletin_id" : "A17",
+    		"bulletin_desc" : "Modification on Discover 100ES",
+    		"plates" : "Mag cover with DTS-i decals",
+    		"date" : "09-08-2014",
+    		"moreinfo" : "1407611943_en_A-17-Modification on Discover100-ES & Mag cover with DTS-i decals.pdf"
+    	}
+    ]
+}
