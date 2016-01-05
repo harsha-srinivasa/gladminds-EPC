@@ -43,19 +43,49 @@ function get_plates () {
     $("#breadcrumb").append(breadcrumb);
 
     //load_sideMenus();
-
-    if(modelID == 2) {
-        create_avengerIndex();
-    } else {
-        create_partIndex();    
-    }
-    
     //create_notice_board();
+
     create_circulars();
     profile_img = '../'+user_details.profile_image;
     url = '../../json/mc_subcategory_menu';
     get_sideMenu_data(url);
     $('body').css('display', 'block');
+
+    if(modelID == 2) {
+        create_avengerIndex();
+    } else if ( ( modelID == 1 ) && ( category_id == 1 ) ) {
+       get_approved_plates ();
+    }  else {
+        create_partIndex();    
+    }
+    
+}
+
+function get_approved_plates () {
+    var data = {
+        "sku_code":"00DH15ZZ",
+        "bom_number":"00211760" 
+    }
+
+console.log('enter');
+    $.ajax({
+        type : 'GET',
+        url : "//192.168.0.62:8000/v1/visualisation-upload-history/approved-history/?access_token="+user_details.at,
+        dataType : 'json',
+        data : data,
+	beforeSend : function(){
+            showLoading();
+        },
+        success : function(res, status) {
+            ss = res;
+	    console.log('finishe');
+            hideLoading();
+        },
+        error : function(e) {
+            console.log(e.status)
+            hideLoading();
+        }
+    });
 }
 
 function create_notice_board() {

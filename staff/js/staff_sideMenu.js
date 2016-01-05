@@ -36,7 +36,7 @@ var create_sideMenu = function(sideMenus_data) {
         var option_ID = sideMenus_data.legend[m].option_ID;
 
         if ( option_ID.charAt(0) == '#'  ) {
-            menus+='<li class="side_tabs"><a id="'+m+'" data-toggle="tab" style="color:'+sideMenus_data.font_color+';" class="side-menus" href="'+option_ID+'">'+sideMenus_data.legend[m].option_name+'</a></li>';
+            menus+='<li id="'+m+'" class="side_tabs"><a id="'+m+'" data-toggle="tab" style="color:'+sideMenus_data.font_color+';" class="side-menus" href="'+option_ID+'">'+sideMenus_data.legend[m].option_name+'</a></li>';
         } else 
             menus+='<li class="side_tabs"><a id="'+m+'" style="color:'+sideMenus_data.font_color+';" class="side-menus" href="'+option_ID+'">'+sideMenus_data.legend[m].option_name+'</a></li>';
     }
@@ -49,4 +49,8 @@ var create_sideMenu = function(sideMenus_data) {
     $('#logout-modal-img').append('<img id="logout_window_img" class="img-responsive" src='+profile_img+' alt="">');
 
     $('#side li:nth-child(2)').addClass('active');
+
+    $('#1').click(function(){
+       get_review_status(); 
+    });
 }

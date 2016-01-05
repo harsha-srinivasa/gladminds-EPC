@@ -1,4 +1,9 @@
 $(function(){
+    isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+    }
 });
 
 $(document).ready(function(){
@@ -22,6 +27,7 @@ $(document).ready(function(){
     });
 
     show_version('../../json/');
+
 
     /*$('.scrollTable').scrolltable({
         stripe: true,
@@ -81,6 +87,9 @@ function get_mc_part_details () {
         }
     });
     $("#side").remove();    
+
+    //url = '../../json/mc_subcategory_menu';
+    //get_sideMenu_data(url);
 } 
 
 var part_name;
@@ -213,7 +222,7 @@ function create_sbom(sbomData) {
     });
 
 
-    $('.st-body-table').addClass('table-bordered');
+    $('.st-body-table, .st-head-table').addClass('table-bordered');
 
 }
 
@@ -254,7 +263,6 @@ var start_mapping = function() {
 }
 
 function breadcrumb() {
-    $("#page-wrapper").css("margin",  "50px 0 0 0");
     $("#table_image_area").css({"margin-top":"-25px"});
     
     if(model_id == 2) {

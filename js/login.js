@@ -170,12 +170,17 @@ function set_login() {
         //url: "//192.168.0.189:8004/v1/gm-users/login/",
         //url: apiURL +"v1/gm-users/login/",
         url: "//qa.bajaj.gladminds.co/v1/gm-users/login/",
+//        url: "//192.168.0.57:8000/v1/gm-users/login/",
         type: "post",
         cache: false,
         data: serilizedData,
         dataType: 'json',
+        beforeSend:function ( ) {
+            showLoading();
+        },
         success: function(data, resp) {
             console.log(data)
+            hideLoading();
 
             if ( "dhananjay.k@gladminds.co" == email ) role = 'staff';
             else if ( "skmishra@bajajauto.co.in" == email ) role = 'admin';

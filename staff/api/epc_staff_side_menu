@@ -12,14 +12,6 @@
             "option_ID" : "#sectionB"
         },
         {
-            "option_name": "Service Circulars",
-            "option_ID" : "#sectionC"
-        },
-        {
-            "option_name": "Notice Board",
-            "option_ID" : "#sectionD"
-        },
-        {
             "option_name": "View Catelogue",
             "option_ID" : "../services/index.html"
         }

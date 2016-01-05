@@ -99,7 +99,7 @@ switch ( $action ) {
 	   } else {
            $str = '{';
            $str .= '"name" : "'.$name.'", "profile_image" : "'.$profile_image.'",'.'"status" : "Success",';
-           $str .= '"role" : "'.$role.'"';
+           $str .= '"role" : "'.$role.'", "at" : "'.$access_token.'"';
 	       $str .= '}';
 	       echo $str; 
 	   }

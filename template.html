@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from themes.startbootstrap.com/flex-admin-v1.2/profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2015 07:11:45 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title></title>
+
+    <!-- PACE LOAD BAR PLUGIN - This creates the subtle load bar effect at the top of the page. -->
+    <link href="../css/plugins/pace/pace.css" rel="stylesheet">
+    <script src="../js/plugins/pace/pace.js"></script>
+
+    <!-- GLOBAL STYLES - Include these on every page. -->
+    <link href="../css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel="stylesheet" type="text/css">
+    <link href="../icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+    <link href="../css/plugins/datatables/datatables.css" rel="stylesheet">
+
+
+    <!-- THEME STYLES - Include these on every page. -->
+    <link href="../staff/css/style.css" rel="stylesheet">
+    <link href="../css/plugins.css" rel="stylesheet">
+
+    <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+    <link href="../css/demo.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+    <style>
+        .navbar-brand { padding:3px 15px;}
+        .navbar-top { background:#FFF; border-bottom:1px solid #CCC;position:fixed; width:100%; z-index:999; }
+        #sidebar-toggle {color:rgb(52, 73, 94); }
+        #wrapper, #page-wrapper { background:#FFF; }
+        #page-wrapper { border:1px solid #CCC; }
+        .page-title { margin:-14px auto; margin-bottom:15px; color:#FFF; }
+        .page-title h1 { margin-left: 30px; font-size:22px; line-height:3.2; }
+        .header {height:45px; position:fixed; width:100%; z-index:9;  }
+        #profile_img { margin:0; width:100%; }
+        .navbar-side .side-user .name { color:#000; }
+        .modal-content { background:rgba(26,36,47,0.9); color:#FFF; }
+
+        .modal-footer { text-align:center;}
+        #logout_window_img {  margin:0 auto; border-radius:75px;}
+        .footer { background:#FFF; font-size:10px; text-align:center; }
+        #drop_area { overflow-y:scroll; height:475px; }
+        /*.side_tabs a { background:#646464 !important; }*/
+        .side_tabs a:hover { background:#000 !important; }
+        @media (min-width: 768px) {
+            #page-wrapper {
+                padding: 0 15px;
+                min-height : 600px;
+            }
+            .navbar-top .navbar-header {
+                width: 205px;
+            }
+        }
+        #sectionA, #sectionB {margin-top:80px;}
+        #side { position:fixed; }
+
+        .side_tabs.active { background:#000 !important; }
+
+
+
+
+
+
+
+
+
+        .mc-plates-footer {text-align:center; }
+        #table thead { background: #2980b9; color:#FFF; }
+        .plates-table thead { background: #ccc; color:#FFF; }
+        .plates-table  {width:100%;}
+        .plates-table tbody tr {text-align:center;}
+        .plates-table thead th, #table thead td{ text-align:center; }
+
+        #table tr td img:hover {cursor:pointer; text-decoration:underline;}
+        .plates-table thead tr{ background:#34495e; }
+        .models:hover{background:#CCC;}
+
+        .dataTables_paginate a { padding:5px 10px 5px 10px; border:1px solid #CCC; border-radius:4px; margin-right:8px;}
+        table.table, .plates-table { margin-bottom:16px !important; }
+        .btn-area { text-align:right; }
+        .heading{float:left;}
+        .progress {border:1px solid #CCC; }
+
+    </style>
+    <div id="wrapper">
+        <!-- begin TOP NAVIGATION -->
+        <nav class="navbar-top" role="navigation">
+
+            <!-- begin BRAND HEADING -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <i class="fa fa-bars"></i> Menu
+                </button>
+                <div class="navbar-brand">
+                    <img src="../staff/Bajaj_Logo.png" class="img-responsive" alt="">
+                </div>
+            </div>
+            <!-- end BRAND HEADING -->
+
+            <div class="nav-top">
+
+                <!-- begin LEFT SIDE WIDGETS -->
+                <ul class="nav navbar-left">
+                    <li class="tooltip-sidebar-toggle">
+                        <a href="#" id="sidebar-toggle" data-toggle="tooltip" data-placement="right" title="Sidebar Toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <!-- You may add more widgets here using <li> -->
+                </ul>
+                <!-- end LEFT SIDE WIDGETS -->
+
+                <!-- begin MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+                <ul class="nav navbar-right">
+                    <li><a href="../services/index.html">
+                        <img src="../img/home.png" alt="Home" class="img-responsive pull-right go-home-btn"></a>
+                    </li>
+                </ul>
+                <!-- /.nav -->
+                <!-- end MESSAGES/ALERTS/TASKS/USER ACTIONS DROPDOWNS -->
+            </div>
+
+            <!-- /.nav-top -->
+        </nav>
+        <!-- /.navbar-top -->
+        <!-- end TOP NAVIGATION -->
+
+        <!-- begin SIDE NAVIGATION -->
+        <nav class="navbar-side" role="navigation">
+            <div class="navbar-collapse sidebar-collapse collapse">
+                <ul id="side" class="nav navbar-nav side-nav"></ul>
+                <!-- /.side-nav -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- /.navbar-side -->
+        <!-- end SIDE NAVIGATION -->
+
+        <!-- begin MAIN PAGE CONTENT -->
+        <div id="page-wrapper">
+
+            <div class="page-content">
+                <!-- begin PAGE TITLE ROW -->
+                <div class="row">
+                    <div class="col-lg-12 header">
+                        <div class="page-title">
+                            <h1>
+                               Electronic Parts Catelogue 
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <!-- end PAGE TITLE ROW -->
+                
+                <div class="row">
+                    <div class="tab-content">
+                       <div id="sectionA" class="tab-pane fade">
+                       </div><!-- /.row -sectionA-->
+                       <div id="sectionB" class="tab-pane fade in active">
+                            <div class="col-lg-12 content">
+                                <div class="portlet portlet-default">
+                                    <div class="portlet-body">
+                                        <div id="userTabContent" class="tab-content">
+                                            <div id="overview">
+                                                <div class="row">
+                                                        <div class="portlet-title">
+                                                            <div class="heading">
+                                                                <h4>Recently Updated Models</h4>
+                                                            </div>
+                                                            <div class="btn-area"></div>
+                                                        </div>
+                                                        <div class="portlet-body area">
+                                                            <div></div>
+                                                            <div class="table-responsive">
+                                                            <table id="table" class="table table-bordered table-een">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th><input id='select_all_models' name='chk' type="checkbox" value=""/></th>
+                                                                    <th>Model Name</th>
+                                                                    <th>SKU Code</th>
+                                                                    <th>Bom Number</th>
+                                                                    <th>Created Date</th>
+                                                                    <th>Plate Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                               <tr class="gradeX models">
+                                                                    <td>
+                                                                        <input class='models' id='1234550' type="checkbox" value="">
+                                                                    </td>
+                                                                    <td>Pulsar 220</td>
+                                                                    <td>1234550</td>
+                                                                    <td>3489394</td>
+                                                                    <td>12-10-2015</td>
+                                                                    <td class="center">
+                                                                        <div class="progress" data-toggle="tooltip" title="Remaining">
+                                                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%" data-toggle="tooltip" data-placement="top" title="Published">
+                                                                             40
+                                                                            </div>
+                                                                            <div data-toggle="tooltip" data-placement="top" class="progress-bar progress-bar-warning" role="progressbar" style="width:10%" title="Pending">
+                                                                            10
+                                                                            </div>
+                                                                        10
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="odd gradeX models">
+                                                                    <td><input class='models' id='1234455' type="checkbox" value=""></td>
+                                                                    <td>Avenger</td>
+                                                                    <td>12344455</td>
+                                                                    <td>3234221</td>
+                                                                    <td>12-02-2015</td>
+                                                                    <td class="center">
+                                                                      <div class="progress" data-toggle="tooltip" title="Remaining">
+                                                                        <div class="progress-bar progress-bar-success" role="progressbar" style="width:20%" data-toggle="tooltip" title="Published">
+                                                                         20 
+                                                                        </div>
+                                                                        <div class="progress-bar progress-bar-warning" role="progressbar" style="width:20%" data-toggle="tooltip" title="Pending">
+                                                                         20 
+                                                                        </div>
+                                                                         60
+                                                                      </div>
+                                                                      <div class="clearfix"></div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.portlet-body -->
+                                </div>
+                                <!-- /.portlet -->
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                   </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+
+            <div class="footer"></div>
+        </div>
+        <!-- /#page-wrapper -->
+        <!-- end MAIN PAGE CONTENT -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- GLOBAL SCRIPTS -->
+    <script src="../js/jquery/jquery.min.js"></script>
+    <script src="../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../js/plugins/popupoverlay/jquery.popupoverlay.js"></script>
+    <script src="../js/plugins/popupoverlay/defaults.js"></script>
+
+    <script src="../js/inc/inc.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/admin_sideMenu.js"></script>
+    <script src="js/version.js"></script>
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Select "Logout" below if you are ready
+    to end your current session.</h4>
+              </div>
+          <div class="modal-body" id="logout-modal-img"></div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="btn btn-success">Logout</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="alert_window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Are you Sure you want to Approve the selected models</h4>
+                </div>
+                <div class="modal-body" id="logout-modal-img"></div>
+                <div class="modal-footer confirm-log-btns">
+                    <button type="button" id="logout-user" class="btn btn-success">Yes</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Notification jQuery -->
+    <script src="../js/plugins/popupoverlay/logout.js"></script>
+    <!-- HISRC Retina Images -->
+    <script src="../js/plugins/hisrc/hisrc.js"></script>
+
+    <!-- PAGE LEVEL PLUGIN SCRIPTS -->
+    <script src="../js/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../js/plugins/datatables/datatables-bs3.js"></script>
+
+
+    <!-- THEME SCRIPTS -->
+    <script src="../js/flex.js"></script>
+
+<script>
+function fnFormatDetails(table_id, html) {
+    var sOut = "<table class='table-bordered plates-table' id=\"table_" + table_id + "\">";
+    sOut += "<thead><th><input class='chk-all-plates' type='checkbox' value=''/></th><th>Plate No</th><th>Plate Name</th><th>Created Date</th><th>Status</th></thead>";
+    sOut += "<tbody>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>1</td><td>Chain Case</td><td>01-03-2015</td><td>Pending</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>2</td><td>Rider Foot Rest</td><td>01-04-2015</td><td>Pending</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut +=  "<tr><td><input type='checkbox' value=''/></td><td>3</td><td>Crankcase</td><td>01-05-2015</td><td>Published</td></tr>";
+    sOut += "</tbody>";
+    sOut += "</table>";
+    return sOut;
+}
+
+
+
+var iTableCounter = 1;
+    var oTable;
+    var oInnerTable;
+    var TableHtml;
+
+    //Run On HTML Build
+    $(document).ready(function () {
+        TableHtml = $("#table").html();
+
+
+        //Insert a 'details' column to the table
+        var nCloneTh = document.createElement('th');
+        var nCloneTd = document.createElement('td');
+        nCloneTd.innerHTML = '<img src="http://i.imgur.com/SD7Dz.png">';
+        nCloneTd.className = "center";
+
+        $('#table thead tr').each(function () {
+            this.insertBefore(nCloneTh, this.childNodes[0]);
+        });
+
+        $('#table tbody tr').each(function () {
+            this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
+        });
+
+        //Initialse DataTables, with no sorting on the 'details' column
+        var oTable = $('#table').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers",
+            "aoColumnDefs": [
+            { "bSortable": false, "aTargets": [0,1] }
+        ],
+            "aaSorting": [[1, 'asc']]
+        });
+
+        $('.btn-area').append('<button id="btn1" class="btn btn-success" id="submit-all">Approve</button><button class="btn btn-red" id="remove_all">Reject</button>');
+
+        $('#select_all_models').change ( function ( ) {
+            if ( $('#select_all_models').prop('checked') ) {
+                $(this).parents('table').find('.models').prop('checked', true);
+            } else {
+                $(this).parents('table').find('.models').prop('checked', false);
+            }
+        });
+
+
+        $('#table_1_filter.dataTables_filter input').attr("placeholder", "Plates search...");
+        $('.dataTables_filter input').attr("placeholder", "Model search...");
+
+        $('#btn1').click(function(e) {
+            $('#alert_window').modal('show');
+        });
+    });
+</script>
+</body>
+</html>

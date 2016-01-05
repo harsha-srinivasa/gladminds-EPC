@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bajaj - gladMinds - Digital Free Service Coupons">
+    <meta name="author" content="Bajaj - gladMinds - Digital Free Service Coupons">
+
+    <title>Bajaj - EPC</title>
+
+    <!-- GLOBAL STYLES - Include these on every page. -->
+    <link href="../../css/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../icons/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- PAGE LEVEL PLUGIN STYLES -->
+   
+    <link rel="stylesheet" type="text/css" href="../../css/breadcrumb.css">
+
+    <!-- THEME STYLES - Include these on every page. -->
+    <link href="../../css/style.css" rel="stylesheet">
+    <link href="../../css/epc-style.css" rel="stylesheet">
+    <link href="../../css/plugins.css" rel="stylesheet">
+
+    <!-- THEME DEMO STYLES - Use these styles for reference if needed. Otherwise they can be deleted. -->
+    <link href="../../css/demo.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .epc-auto {
+            width: 65%;
+            margin: 0 auto;
+        }
+        .circle-tile-number {
+            border: 1px solid #000;
+        }
+        .circle-tile-footer {
+            background: #03A367;
+        }
+        .auto-title {
+              color: #000;
+                font-size: 16px;
+        }
+        #feedLogs {
+            padding-top: 10px;
+        }
+		.print {	
+			position:relative;
+		}
+
+        table {
+            width: 100%;
+            display:block;
+        }
+        thead {
+            width: 100%;
+            height: 20px;
+        }
+        tbody {
+            height: 300px;
+            display: inline-block;
+            width: 102%;
+            overflow: auto;
+            border-bottom:1px solid #ccc;
+        }
+
+        th, td {
+            text-align:center;
+            white-space:nowrap;
+        }
+
+        .slNo { width:50px }
+        .part_no{ width:150px }
+        .description{ width:200px;text-align:left; }
+        .qty1{ width:50px }
+        .qty2{ width:50px }
+        .remarks{ width:140px }
+        .remks{ width:210px }
+        .eco_status { width:92px;}
+
+        .tabDate_head th{color:#FFF;}
+        #search { width:70%; }
+    </style>
+</head>
+
+<body topmargin="0" leftmargin="0">
+
+    <div id="wrapper" class="dfsc-outer-wrapper">
+
+        <!-- begin TOP NAVIGATION -->
+        <nav class="navbar-top" role="navigation" id="mob-top-navbar">
+            <!-- begin BRAND HEADING -->
+            <div class="navbar-header" id="mob-navbar-header">
+                <div class="mobile-topmenu-btn">
+                      <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                </div>
+                                  
+            </div>
+            <!-- end BRAND HEADING -->
+
+            <div class="nav-top">
+
+                <!-- begin LEFT SIDE WIDGETS -->
+                <ul class="nav navbar-left">
+                    <li class="tooltip-sidebar-toggle">
+                        <img id="bajaj-logo" class="img-responsive" src="../../img/logo.png" alt="Bajaj">
+                    </li>
+                </ul>
+                <ul class="nav navbar-right">
+                    <li class="home-btn-liElelment pull-right">
+                        <a href="../index.html">
+                            <img src="../../img/home.png" alt="Home" class="img-responsive pull-right go-home-btn">
+                        </a>
+                    </li>
+                </ul>
+                <!-- end LEFT SIDE WIDGETS -->
+            </div>
+            <!-- /.nav-top -->
+        </nav>
+        <!-- /.navbar-top -->
+
+<!-- ================== TOP Navbar (new) =========================== -->
+
+    <nav class="navbar navbar-default" style="display:none;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- <img id="bajaj-logo" class="img-responsive" src="../img/Bajaj_Logo.png"> -->
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
+
+        <!-- begin SIDE NAVIGATION -->
+        <nav class="navbar-side" role="navigation">
+            <div class="navbar-collapse sidebar-collapse collapse">
+                <ul id="side" class="nav navbar-nav side-nav bajaj-sidetab bajaj-side-menuStack" style="border-right: 1px solid #848484;">
+                </ul>
+                <!-- /.side-nav -->
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- /.navbar-side -->
+        <!-- end SIDE NAVIGATION -->
+
+        <!-- begin MAIN PAGE CONTENT -->
+        <div id="page-wrapper" class="epc-cv-page-wrapper">
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="clearfix">
+                        <div id="breadcrumb"></div>
+                    </div>
+                    
+                    <p class="partsIndexTitle"></p>
+                    <div class="col-lg-12">
+                        <div class="row">
+
+                            <section id="table_image_area bom-ktm" class="clarfix">
+                                <div class="col-lg-12 col-md-12 col-md-12 col-xs-12 clearfix">
+                                    <!-- <p class="sbom-title-head"></p> -->
+                                    <div class="col-lg-5 col-md-7 col-sm-7 col-xs-7 clearfix padding-zero">
+                                        
+                                       <!--  <button class="print print-cv pull-right"><i class="fa fa-print table-print"></i></button> -->
+                                        
+                                        <div>
+                                            <map name="FPMap0" id="FPMap0"></map>
+                                            <div class="sbom-img-block"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-5 col-sm-5 col-xs-5 clearfix">
+                                        <button class="change_page_btns_cv" id="go_previous">Previous Plate</button>
+                                        <button class="change_page_btns_cv" id="go_next">Next Plate</button>
+
+                                        <input type="text"  id="search" placeholder="Search..." class="search-dropdown-addPlate">
+                                        <table class="table table-bordered" id="ePC-sbom-table">
+                                            <div class="col-md-12 padding-zero">
+                                                <div id="print-table-name" class="col-md-6"></div>
+                                                <div class="print-date col-md-6"></div>
+                                            </div>
+                                            <thead class="tabDate_head"></thead>
+                                            <tbody class="tabData_body"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+        </div>
+            <!-- /.page-content -->
+
+    </div>
+        <!-- /#page-wrapper -->
+</div>
+    <!-- /#wrapper -->
+
+    
+
+    <!-- GLOBAL SCRIPTS -->
+    <script src="../../js/jquery/jquery.min.js"></script>
+    <script src="../../js/plugins/bootstrap/bootstrap.min.js"></script>
+    <script src="../../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- Logout Notification Box -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="logout-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Select "Logout" below if you are ready
+to end your current session.</h4>
+          </div>
+          <div class="modal-body" id="logout-modal-img">
+          </div>
+          <div class="modal-footer confirm-log-btns">
+            <button type="button" id="logout-user" class="btn logout-window-btns" onclick="logout_user();">Logout</button>
+            <button type="button" class="btn logout-window-btns" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="../../js/plugins/hisrc/hisrc.js"></script>
+
+    <script src="js/sbom.js"></script>
+    <script src="../../js/autoscroll.js"></script>
+
+
+    <script type="text/javascript" src="../../js/inc/inc.js"></script>
+    <!-- jQuery Vector Map -->
+    <script src="../../js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../js/plugins/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- THEME SCRIPTS -->
+    <script src="../../js/flex.js"></script>
+
+    <script src="../../js/jquery/jquery.maphilight.js"></script>
+    <script src="../../js/jquery/jQuery.print.js"></script>
+
+    <!-- scroll file-->
+    <script type="text/javascript" src="../../js/plugins/jquery.scrollTo.min.js"></script>
+
+    <script type="text/javascript" src="../../js/active.js"></script>
+
+    <script type="text/javascript" src="../js/version.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        $(document).on('click', '.side-menus', function(){
+           $("body").scrollTo($(this).attr('href'), {
+                duration: '300', 
+                onAfter: function() {}
+            });
+           
+            $('a').removeClass('active');
+           
+            $(this).addClass('active');
+
+        });
+
+        $(document).ready(function(){
+            var imgPath = localStorage.getItem("imgURL");
+            var profile_img = activeUrl.concat(imgPath);
+            var user = localStorage.getItem("username");
+
+            var logout_user = '<img class="img-circle img-logout" src='+profile_img+' alt=""><p><strong>'+user+'</strong></p>';
+
+            $("#logout-modal-img").append(logout_user);
+        
+            $('.print').click(function(){
+                $('.print').print();
+            });
+        });
+
+
+        $(function() {
+            $("#table_image_area").find('.print').on('click', function() {
+                $.print("#printable");
+                $('#table_image_area').print();
+            });
+        });
+
+        function search_filter () {
+            var $rows = $('.tabData_body tr');
+            $('#search').keyup(function() {
+                var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+                
+                $rows.show().filter(function() {
+                    var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                    return !~text.indexOf(val);
+                }).hide();
+            });
+        }
+    </script>
+
+    <footer class="bajaj-footer"></footer>
+    <div id="loading">
+        <div class="txt"></div>
+        <div class="bg"></div>
+    </div>
+</body>
+</html>
