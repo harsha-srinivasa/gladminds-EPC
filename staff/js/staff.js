@@ -1,11 +1,11 @@
-var apiURL = "//192.168.0.189:8004/";
+var apiURL = "//192.168.4.103:8000/";
 var cvApiUrl = '//qa.bajajcv.gladminds.co/'; 
 var pbApiUrl =  '//qa.probiking.gladminds.co/'; 
 
 apiURL = "//qa.bajaj.gladminds.co/";
 //apiURL = "//local.bajaj.gladminds.co:8000/";
 //var apiURL = "//192.168.0.57:8000/";
-apiURL = "//192.168.0.65:8001/";
+apiURL = "//192.168.4.103:8000/";
 
 var admin_details = function () {
     this.at;
@@ -140,7 +140,7 @@ var admin_details = function () {
                 'sku_code' : model_val,
                 'access_token' : _this.at
         };
-        $.ajax({
+        var cur_req = $.ajax({
             url  : _this.url + "v1/bom-headers/",
             type : 'GET',
             dataType: 'json',
@@ -148,6 +148,9 @@ var admin_details = function () {
 
             beforeSend :function () {
                 $('#bomNum').val('Loading...');
+                if ( cur_req != null ) {
+                    cur_req.abort();
+                }
             },
             success: function(data, resp) {
                 $('#bomNum').val(data.objects[0].bom_number);
@@ -290,8 +293,8 @@ ss =response;
 
    $("#data").on('submit',function(){
        var options={
-          url: "//qa.bajaj.gladminds.co/v1/bom-plate-parts/save-part/?access_token="+details.at,
-//           url: "//192.168.0.62:8000/v1/bom-plate-parts/save-part/?access_token="+details.at,
+//          url: "//qa.bajaj.gladminds.co/v1/bom-plate-parts/save-part/?access_token="+details.at,
+           url: "//192.168.4.103:8000/v1/bom-plate-parts/save-part/?access_token="+details.at,
 //          url: apiURL + "v1/bom-plate-parts/save-part/?access_token="+details.at,
            beforeSend : function ( ) {
 		showLoading();
@@ -428,7 +431,7 @@ function get_review_status () {
         type : 'GET',
 //        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
         //url : apiURL +'v1/visualisation-upload-history/?access_token='+user_details.access_token,
-        url : '//192.168.0.65:8001/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
+        url : '//192.168.4.103:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
         dataType : 'json',
         beforeSend : function () {
             $('body').css('display', 'block');
@@ -478,7 +481,7 @@ console.log(history_id);
         $.ajax({
             type : 'GET',
            // url : "//qa.bajaj.gladminds.co/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
-            url : "//192.168.0.65:8001/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
+            url : "//192.168.4.103:8000/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
             dataType : 'json',
 	    beforeSend: function () {
 		showLoading();

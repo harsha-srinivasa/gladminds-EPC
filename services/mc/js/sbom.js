@@ -1,9 +1,4 @@
 $(function(){
-    isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-    }
 });
 
 $(document).ready(function(){
@@ -27,7 +22,6 @@ $(document).ready(function(){
     });
 
     show_version('../../json/');
-
 
     /*$('.scrollTable').scrolltable({
         stripe: true,
@@ -87,9 +81,6 @@ function get_mc_part_details () {
         }
     });
     $("#side").remove();    
-
-    //url = '../../json/mc_subcategory_menu';
-    //get_sideMenu_data(url);
 } 
 
 var part_name;
@@ -145,6 +136,14 @@ function create_sbom(sbomData) {
                     <th class="qty2" bgcolor="#646464"><b>AS</b></th>\
                     <th class="remarks" bgcolor="#646464"><b>Remarks</b></th>\
                 </tr>';
+                  if ( pageID == 772 ) {
+console.log('sss');
+			  $('#view').css('display', 'block');
+  $('#3d_bom_mc').css('display', 'block');
+  $('#bom-mc').css('display', 'none');
+
+			 show3d_model();
+                   }
     } else if ( ( model_id==1) && (category_id== 7)) {
         sbom_thead = '<tr class="table-title-header" bgcolor="#cdcdcd">\
                     <th class="slNo" bgcolor="#646464"><b>Sl.No</b></th>\
@@ -222,7 +221,7 @@ function create_sbom(sbomData) {
     });
 
 
-    $('.st-body-table, .st-head-table').addClass('table-bordered');
+    $('.st-body-table').addClass('table-bordered');
 
 }
 
@@ -263,6 +262,7 @@ var start_mapping = function() {
 }
 
 function breadcrumb() {
+    $("#page-wrapper").css("margin",  "50px 0 0 0");
     $("#table_image_area").css({"margin-top":"-25px"});
     
     if(model_id == 2) {

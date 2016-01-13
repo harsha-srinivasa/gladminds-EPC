@@ -43,49 +43,19 @@ function get_plates () {
     $("#breadcrumb").append(breadcrumb);
 
     //load_sideMenus();
-    //create_notice_board();
 
+    if(modelID == 2) {
+        create_avengerIndex();
+    } else {
+        create_partIndex();    
+    }
+    
+    //create_notice_board();
     create_circulars();
     profile_img = '../'+user_details.profile_image;
     url = '../../json/mc_subcategory_menu';
     get_sideMenu_data(url);
     $('body').css('display', 'block');
-
-    if(modelID == 2) {
-        create_avengerIndex();
-    } else if ( ( modelID == 1 ) && ( category_id == 1 ) ) {
-       get_approved_plates ();
-    }  else {
-        create_partIndex();    
-    }
-    
-}
-
-function get_approved_plates () {
-    var data = {
-        "sku_code":"00DH15ZZ",
-        "bom_number":"00211760" 
-    }
-
-console.log('enter');
-    $.ajax({
-        type : 'GET',
-        url : "//192.168.0.62:8000/v1/visualisation-upload-history/approved-history/?access_token="+user_details.at,
-        dataType : 'json',
-        data : data,
-	beforeSend : function(){
-            showLoading();
-        },
-        success : function(res, status) {
-            ss = res;
-	    console.log('finishe');
-            hideLoading();
-        },
-        error : function(e) {
-            console.log(e.status)
-            hideLoading();
-        }
-    });
 }
 
 function create_notice_board() {
@@ -262,38 +232,26 @@ var changeFormat = function(published_date) {
 
 /*
 function load_sideMenus() {
-
     $.ajax({
         type: 'GET',
         url: 'api/mc_subcategory_menu',
         dataType: 'json',
         success: function(sideMenus_data, status) {
-
             $("#bajaj-logo").attr("src", sideMenus_data.header_logo);
-
             var profile_img = '../'+user_details.profile_image;
             var user = user_details.name;
-
             var menus = '<li class="side-user hidden-xs"><img class="img-responsive" src=' + profile_img + ' alt=""><p class="welcome"><i class="fa fa-key"></i> Logged in as</p><div class="col-md-12 name tooltip-sidebar-logout text-center padding-zero user_name">' + user + '</div><div class="col-md-12 padding-zero user_logout text-left"><a class="bajaj-user-logout text-right" style="color: inherit" class="logout_open" href="#logout" data-toggle="tooltip" data-placement="top" title="Logout"><i class="fa fa-sign-out" data-toggle="modal" data-target="#logout-window">Logout</i></a></div><div class="clearfix"></div></li>';
-
             for (var m = 0; m < sideMenus_data.legend.length; m++) {
                 var option_name = sideMenus_data.legend[m].option_name;
                 var option_ID = sideMenus_data.legend[m].option_ID;
-
                 if ( sideMenus_data.legend[m].option_name == 'Profile' ) {
                     menus += '<li><a style="color:' + sideMenus_data.font_color + ';background:' + sideMenus_data.bg_color + ';" class="side-menus" href="' + option_ID + '">' + sideMenus_data.legend[m].option_name + '</a></li>';
                 } else 
                     menus += '<li><a style="color:' + sideMenus_data.font_color + ';background:' + sideMenus_data.bg_color + ';" class="side-menus" href="#' + option_ID + '">' + sideMenus_data.legend[m].option_name + '</a></li>';
-
             }
-
-
-
             $("#side").append(menus);
-
             $("#side").css("display", "block");
             $("#dfsc-userImg").css("display", "block");
-
             var hashed_value = window.location.hash.substr(1);
         },
         error: function(e) {

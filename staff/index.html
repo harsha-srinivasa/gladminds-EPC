@@ -46,6 +46,12 @@
 
 <body>
     <style>
+	.loadinggif {
+	   background:
+	     url('/ajax-loader.gif')
+	     no-repeat
+	     right center;
+	}
         .images{visibility:hidden;}
         .my-content { min-height:550px;}
         .image-area { margin-top:20px;}
@@ -67,7 +73,7 @@
         .remarks{ width:160px !important; }
         .remks{ width:210px !important; }
 	.table-squidheadlink {background:#CCC; color:#000;}
-        .modal-body{min-height:450px;}
+        #review-window .modal-body{min-height:450px;}
     </style>
     <div id="wrapper">
         <!-- begin TOP NAVIGATION -->
@@ -169,6 +175,7 @@
                                         <div class="form-group col-md-12 col-sm-12 col-xs-12 padding-zero add-sku-block">
                                             <input type="hidden" id='plate_name' name= 'plateName' placeholder="Plate Name" class="search-dropdown-addPlate form-control">
                                         </div>
+<!--
                                         <div class="form-group col-md-3 col-sm-12 col-xs-12 image-area">
                                             <span class='profile-edit' id='model_img-btn'>Upload Plate Image</span>
                                             <img id='demo-model-img' class="img-responsive img-profile" src="../img/upload_pd.png" alt="Plate Image">
@@ -179,6 +186,7 @@
                                             <img id='dashboard_img' class="img-responsive img-profile" src="../img/upload_pd.png" alt="Plate Image">
                                             <input type="file" name = 'dashboardImage' class="images"  id="dashboard_image" accept="image/*" onChange="showMyDashboardImage(this)">
                                         </div>
+-->
                                         <div class="form-group col-md-12">
                                             <label for="plate_map">Plate Map File</label>
                                             <input type="file" name='plateMap' id="plate_map">
