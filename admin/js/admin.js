@@ -1,10 +1,8 @@
-
 scrollTable = true;
 var history_id;
+
 $(document).ready(function(){
-
-
-       $.fn.preload = function() {
+    $.fn.preload = function() {
         this.each(function(){
             $('<img/>')[0].src = this;
         });
@@ -45,7 +43,7 @@ function get_bike_models() {
         type : 'GET',
 //        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token,
         //url : apiURL +'v1/visualisation-upload-history/?access_token='+user_details.access_token,
-        url : '//192.168.0.59:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token,
+        url : '//192.168.0.59:8000/v1/visualisation-upload-history/upload-history/?access_token='+user_details.access_token,
         dataType : 'json',
         beforeSend : function () {
             $('body').css('display', 'block');
@@ -75,6 +73,7 @@ function show_data ( data ) {
         var eco_num = data.objects[i].eco_number || '-';
         s = '<tr class="review-sbom">';
         s += "<td>"+data.objects[i].id+"</td>";
+        s += "<td>"+data.objects[i].model_name+"</td>";
         s += "<td>"+data.objects[i].sku_code+"</td>";
         s += "<td>"+data.objects[i].bom_number+"</td>";
         s += "<td>"+data.objects[i].plate_id+"</td>";
@@ -95,7 +94,12 @@ function show_data ( data ) {
 function review_sbom ( ) {
     $('.review-sbom').click(function (e) {
         var id = history_id = $(this).closest('tr').find('td:first').text();
-console.log(history_id);
+        var modelName = $(this).closest('tr').find('td:nth-child(2)').text();
+        $('.sbom-model-name h4').text('Model Name:'+modelName);
+        var plateName= $(this).closest('tr').find('td:nth-child(5)').text();
+        $('.sbom-plate-name h4').text('Plate:'+plateName);
+        var plateStatus= $(this).closest('tr').find('td:last').text();
+        $('.sbom-status h4').text('Status:'+plateStatus);
 
         $.ajax({
             type : 'GET',
@@ -165,6 +169,7 @@ function show_sbom ( data ) {
         maxHeight: 300
     });
     $('#review-window').modal('show');
+    $('.st-body-table ').addClass('table table-bordered');
     hideLoading();
 }
 
@@ -237,9 +242,11 @@ function change_plate_status (e) {
         success : function(data, status) {
             console.log(data);
             hideLoading();
+            $('.sbom-status').text('Status:'+data.status);
         },
         error : function(e) {
             console.log(e);
+            hideLoading();
         }
     });
 }

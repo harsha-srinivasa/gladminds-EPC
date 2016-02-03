@@ -427,7 +427,7 @@ function get_review_status () {
         type : 'GET',
 //        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
         //url : apiURL +'v1/visualisation-upload-history/?access_token='+user_details.access_token,
-        url : '//192.168.0.59:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
+        url : '//192.168.0.59:8000/v1/visualisation-upload-history/upload-history/?access_token='+user_details.access_token+'&limit=100',
         dataType : 'json',
         beforeSend : function () {
             $('body').css('display', 'block');
@@ -450,6 +450,7 @@ function show_data ( data ) {
         var eco_num = data.objects[i].eco_number || '-';
         s = '<tr class="review-sbom">';
         s += "<td>"+data.objects[i].id+"</td>";
+        s += "<td>"+data.objects[i].model_name+"</td>";
         s += "<td>"+data.objects[i].sku_code+"</td>";
         s += "<td>"+data.objects[i].bom_number+"</td>";
         s += "<td>"+data.objects[i].plate_id+"</td>";
@@ -461,7 +462,12 @@ function show_data ( data ) {
         $('#sbom_data').append(s);
     }
 
-    $('#table').DataTable();
+/*    $('#table').DataTable({
+        language: {
+            searchPlaceholder: "Search records..."
+        }
+    });
+*/
 
 //    $('#table').dataTable({"bAutoWidth": false});
 

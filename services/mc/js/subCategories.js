@@ -29,8 +29,7 @@ function get_plates () {
     category_id = getParameterByName('category');
     category_name = getParameterByName ( 'category_name' );
     model_name = getParameterByName ( 'model_name' );
-        
-                
+
     $('footer').css('margin', '20px auto');
     $('footer').css('position', 'relative');
 
@@ -41,21 +40,44 @@ function get_plates () {
                             <li class="first"><a href="#" style="z-index:6;"><span></span>'+category_name+'</a></li>\
                         </ul>';
     $("#breadcrumb").append(breadcrumb);
-
-    //load_sideMenus();
-
-    if(modelID == 2) {
-        create_avengerIndex();
-    } else {
-        create_partIndex();    
-    }
-    
     //create_notice_board();
     create_circulars();
     profile_img = '../'+user_details.profile_image;
     url = '../../json/mc_subcategory_menu';
     get_sideMenu_data(url);
     $('body').css('display', 'block');
+
+
+
+    if ( modelID ==1 && category_id == 5 ) {
+       sku_code = '00DJ07ZZ';
+       bom_number= '211760';
+
+        $.ajax({
+            url : "//192.168.1.6:8000/v1/visualisation-upload-history/approved-history/?access_token="+user_details.at+"&sku_code=00DJ07ZZ&bom_number=211760",
+            type : 'get',
+            dataType: 'json',
+
+            beforeSend:function() {
+                showLoading();
+            }, 
+            success: function(data, resp) {
+                show_plates(data);
+            },
+            error : function ( data, res ) {
+            }
+        });
+
+        return;
+    }
+        
+                
+       if(modelID == 2) {
+        create_avengerIndex();
+    } else {
+        create_partIndex();    
+    }
+    
 }
 
 function create_notice_board() {
@@ -126,8 +148,72 @@ function create_partIndex() {
     });
 }
 
+function show_plates(category) {
+        var cat = category.approved_plates;
+        var first_plate_id = category.first_plate_id;
+        var last_plate_id = category.last_plate_id;
+    for(var index=0; index < cat.length;index++) {
+
+        if(cat[index].status > 0) {
+            moreinfo = "sbom.html?model="+modelID+"&category="+category_id+"&plateID="+cat[index].subcategory_id+"&model_name="+model_name+"&category_name="+category_name+"&first_plate_id="+first_plate_id+"&last_plate_id="+last_plate_id;
+                        
+                        pictorial_index = '<div class="col-lg-3 plates_dashbox">\
+            <div class="portlet portlet-default plate_block"><a class="plateSearch_key" href="'+moreinfo+'">\
+                <div id="defaultPortlet" class="panel-collapse collapse in" data-toggle="tooltip" title="'+cat[index].subcategory_name+'" >\
+                    <div class="portlet-body auto-img-block">\
+                    <span class="coming-soon" style="display: none">Coming Soon</span>\
+                        <img src="'+cat[index].plate_image+'" class="img-responsive">\
+                </div>\
+                <div class="vin_no" style="display:none;">'+cat[index].VIN_no+'</div>\
+                <div style="overflow:hidden;" class="portlet-footer mc-plates-footer '+index+'" data-toggle="tooltip" title="'+cat[index].plate_name+'">'+cat[index].plate_name+'</div>\
+            </div>\
+        </div>';
+        } else {
+            pictorial_index = '<div class="col-lg-3 plates_dashbox">\
+            <div class="portlet portlet-default plate_block">\
+                <div id="defaultPortlet" class="panel-collapse collapse in" data-toggle="tooltip" title="'+cat[index].subcategory_name+'">\
+                    <div class="portlet-body auto-img-block">\
+                    <span class="coming-soon" style="display: block">Coming Soon</span>\
+                        <img src="'+cat[index].plate_image+'" class="img-responsive">\
+                </div>\
+                <div class="vin_no" style="display:none;">'+cat[index].VIN_no+'</div>\
+                <div class="portlet-footer mc-plates-footer" data-toggle="tooltip" title="'+cat[index].plate_name+'">'+cat[index].plate_name+'</div>\
+            </div>\
+        </div>';
+        }
+                
+        $("#pictorial_area").append(pictorial_index);  
+        hideLoading();
+
+        /*if ($('.plate_block').scrollWidth >  $('.'+index).innerWidth()) {
+            //Text has over-flowed
+            $('.'+index).css('color', '#CCC');
+        }*/
+    }
+    
+
+    $("#dashboard").css("display", "block");
+    $("#dashboard").css("visibility", "visible"); 
+    $("#dashboard_area").css("display", "block");
+
+
+    $( '#pictorial_area' ).searchable({
+        searchField: '#plate_search',
+        selector: '.plates_dashbox',
+        childSelector: '.plateSearch_key, .vin_no',
+
+        
+        show: function( elem ) {
+            elem.slideDown(100);
+        },
+        hide: function( elem ) {
+            elem.slideUp( 100 );
+        }
+    });
+}
+
 function create_category_blocks(category) {
-    showLoading();
+        showLoading();
         var cat = category.legend;
         var first_plate_id = category.first_plate_id;
         var last_plate_id = category.last_plate_id;
