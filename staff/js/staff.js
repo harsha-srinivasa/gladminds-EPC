@@ -1,11 +1,12 @@
-var apiURL = "//192.168.4.103:8000/";
+var apiURL = "//192.168.0.59:8000/";
+var scrollTable = true;
 var cvApiUrl = '//qa.bajajcv.gladminds.co/'; 
 var pbApiUrl =  '//qa.probiking.gladminds.co/'; 
 
 apiURL = "//qa.bajaj.gladminds.co/";
 //apiURL = "//local.bajaj.gladminds.co:8000/";
 //var apiURL = "//192.168.0.57:8000/";
-apiURL = "//192.168.4.103:8000/";
+apiURL = "//192.168.0.59:8000/";
 
 var admin_details = function () {
     this.at;
@@ -164,12 +165,16 @@ var admin_details = function () {
 
     this.get_plate_ids = function (model_val) {
         _this = this;
+        bom_number = $('#bomNum').val();
         var data = {
                 'bom__sku_code' : model_val,
+                'bom_number' : bom_number,
                 'access_token' : _this.at
+
         };
         $.ajax({
-            url  : "//qa.bajaj.gladminds.co/v1/bom-plate-parts/",
+            //url  : "//qa.bajaj.gladminds.co/v1/bom-plate-parts/",
+            url  : "//192.168.0.59:8000/v1/bom-plate-parts/get-plates/",
             type : 'GET',
             dataType: 'json',
             data : data,
@@ -178,29 +183,16 @@ var admin_details = function () {
             },
             success: function(data, resp) {
                 $('#plateId option:first-child').text('---Select Plate ID---');
-                var s = ['comp', 'pend', 'rem'];
-                for ( var i = 0; i < data.objects.length; i++ ) {
-                    if ( data.objects[i].plate.plate_id ) {
-                        var n = s[Math.floor(Math.random() * s.length)];
-                        data.objects[i].plate.plate_status = n;
-                    }
-                }
-
-                for ( var i = 0; i < data.objects.length; i++ ) {
-                    if ( data.objects[i].plate.plate_id ) {
-                        var plate = data.objects[i].plate.plate_id + '-' + data.objects[i].plate.plate_txt;
-                        $('#plateId').append($('<option>', { 
-                            rel: data.objects[i].plate.plate_txt,
+                for ( var i = 0; i < data.length; i++ ) {
+                    if ( data[i].plate_id ) {
+                        var plate = data[i].plate_id + '-' + data[i].description;
+                        $('#plateId').append($('<option>', {
+                            rel: data[i].description,
                             text: plate,
-                            value: data.objects[i].plate.plate_id,
-                            class : data.objects[i].plate.plate_status
+                            value: data[i].plate_id,
                         }));
                     }
                 }
-
-            //    $('.comp').css('background', 'green');
-             //   $('.pend').css('background', 'orange');
-              //  sortSelect('#plateId', 'value', 'asc');
                 _this.onChangePlateIds();
             },
             error : function ( data, res ) {
@@ -269,32 +261,36 @@ $(document).ready(function () {
     });
 
     function onsuccess(response,status){
- //       if ( response.message == 'EXISTING' ) {
-            $('#confirm-window').modal('show');
-            $('#yes').click(function(e) {
-                $('#upload_ok').val('reject');
-                $('#confirm-window').modal('hide');
-                $('#comment').val( $('#comments').val());
+        if ( response.message == 'EXISTING' ) {
+            $('#plate_status').modal('show');
+            hideLoading();
+            $('#yes').bind('click', function(e) {
+		$('#yes').unbind('click');
+                $('#upload_ok').val('update');
+                $('#plate_status').modal('hide');
+	            var options={
+            //          url: "//qa.bajaj.gladminds.co/v1/bom-plate-parts/save-part/?access_token="+details.at,
+      	                url: "//192.168.0.59:8000/v1/bom-plate-parts/save-part/?access_token="+details.at,
+            //          url: apiURL + "v1/bom-plate-parts/save-part/?access_token="+details.at,
+                        beforeSend : function ( ) {
+                            showLoading();
+		        },
+		        success : onsuccess
+	                };
+                        $('#data').ajaxSubmit(options);
             });
-            
-            show_resp(response);
-/*          } else {
-
-console.log(response);
-ss =response;
+        } else {
             $("#error_msg").html("Status :<b>"+status+'</b><br><br>Response Data :<div id="msg" style="border:5px solid #CCC;padding:15px;">'+response+'</div>');
             $('#area').hide();
             show_resp(response);
             hideLoading();
         }
-*/
-	hideLoading();
     }
 
    $("#data").on('submit',function(){
        var options={
 //          url: "//qa.bajaj.gladminds.co/v1/bom-plate-parts/save-part/?access_token="+details.at,
-           url: "//192.168.4.103:8000/v1/bom-plate-parts/save-part/?access_token="+details.at,
+           url: "//192.168.0.59:8000/v1/bom-plate-parts/save-part/?access_token="+details.at,
 //          url: apiURL + "v1/bom-plate-parts/save-part/?access_token="+details.at,
            beforeSend : function ( ) {
 		showLoading();
@@ -431,7 +427,7 @@ function get_review_status () {
         type : 'GET',
 //        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
         //url : apiURL +'v1/visualisation-upload-history/?access_token='+user_details.access_token,
-        url : '//192.168.4.103:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
+        url : '//192.168.0.59:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token+'&limit=100',
         dataType : 'json',
         beforeSend : function () {
             $('body').css('display', 'block');
@@ -481,7 +477,7 @@ console.log(history_id);
         $.ajax({
             type : 'GET',
            // url : "//qa.bajaj.gladminds.co/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
-            url : "//192.168.4.103:8000/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
+            url : "//192.168.0.59:8000/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
             dataType : 'json',
 	    beforeSend: function () {
 		showLoading();
@@ -503,8 +499,8 @@ console.log(history_id);
 
 
 function show_sbom ( data ) {
-   $('.tab-body').text('');
-   $('.tab-body').html('');
+    $('.tab-body').text('');
+    $('.tab-body').html('');
 //   $(['//'+data.plate_image]).preload();
     var str = '<img border="0" usemap="#FPMap0" src="'+data.plate_image+'" usemap="#FPMap0">';
 
@@ -512,13 +508,35 @@ function show_sbom ( data ) {
     $('#FPMap0').append('');
 
     for ( var i = 0; i < data.plate_part_details.length; i++ ) {
+	s = data.plate_part_details[i].x_coordinate+', '+data.plate_part_details[i].y_coordinate;
+	s += ', ' +data.plate_part_details[i].z_coordinate;
+
+        var map = '<area href="#'+data.plate_part_details[i].part_href+'" shape="circle" coords="'+s+'">';
+        $("#FPMap0").append(map);
+
+        var remarks = data.plate_part_details[i].remarks || "--";
+
+        str = '<tr class="table-squidheadlink '+data.plate_part_details[i].part_href+'">';
+        str += '<td class="slNo">'+data.plate_part_details[i].serial_number+'</td>';
+        str += '<td class="part_no">'+data.plate_part_details[i].part_number+'</td>';
+        str += '<td class="description">'+data.plate_part_details[i].description+'</td>';
+        str += '<td class="qty1">'+data.plate_part_details[i].quantity+'</td>';
+        str += '<td class="remks">'+remarks +'</td>';
+        str += '</tr>';
+
+        $(".tabData_body").append(str)
+    }
+    start_mapping();
+
+/*
+    for ( var i = 0; i < data.plate_part_details.length; i++ ) {
         var remarks = data.plate_part_details[i].remarks || '--';
         var co_ordinates = "'"+data.plate_part_details[i].x_coordinate + ',';
         co_ordinates += data.plate_part_details[i].y_coordinate + ',' + data.plate_part_details[i].z_coordinate + "'";
 
             var s;
             for ( var j = 0; j < data.plate_part_details[i].x_coordinates.length; j++ ) {
-                s = data.plate_part_details[i].x_coordinates[j]+', '+data.plate_part_details[i].y_coordinates[j];
+                s  data.plate_part_details[i].x_coordinates[j]+', '+data.plate_part_details[i].y_coordinates[j];
                 s += ', ' +data.plate_part_details[i].z_coordinates[j];
                 $('#FPMap0').append('<area href="#'+data.plate_part_details[i].part_href+'" shape="circle" coords="'+s+'">');
             }
@@ -535,13 +553,13 @@ function show_sbom ( data ) {
         $('#sbom_details').append(str);
     }
 
-    start_mapping();
+*/
 
     $('.scrollTable').scrolltable({
         stripe: true,
         oddClass: 'odd',
         setWidths: true,
-        maxHeight: 100
+        maxHeight: 300
     });
     hideLoading();
 }
@@ -551,7 +569,8 @@ var start_mapping = function() {
     // Assign Class to image
     $('[usemap="#FPMap0"]').addClass('map');
 
-    $.each(areaTags, function( index, value ) { //console.log(index) $(areaTags[index]).attr("data-maphilight",'{"strokeColor":"6633FF", "strokeWidth":2, "fillColor":"99CCFF", "fillOpacity":0.2}').attr("class","squidheadlink");
+    $.each(areaTags, function( index, value ) {
+        $(areaTags[index]).attr("data-maphilight",'{"strokeColor":"6633FF", "strokeWidth":2, "fillColor":"99CCFF", "fillOpacity":0.2}').attr("class","squidheadlink");
         id = $(areaTags[index]).attr("href");
         id = id.substr(1);
         id = id.replace(/\s/g, '');
@@ -564,21 +583,21 @@ var start_mapping = function() {
     $('.map').maphilight();
     $('.table-squidheadlink').mouseover(function (e) {
         scrollTable = false;
-        highlight_data(this, e, '#CCC' );
+        highlight_data(this, e, '#848484' );
     }).mouseout(function(e) {
         scrollTable=true;
         remove_highlight_data ( this, e);
     }).click(function(e) { e.preventDefault(); });
 
     $('.squidheadlink').mouseover(function(e) {
-        highlight_data(this, e, '#CCC');
+        highlight_data(this, e, '#848484');
         if ( scrollTable ) {
             scroll_if_not_visible(sClass);
         }
     }).mouseout(function(e) {
         remove_highlight_data ( this, e);
     }).click(function(e) { e.preventDefault(); });
-
 }
-    
+
+
 

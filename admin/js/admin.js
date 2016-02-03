@@ -43,9 +43,9 @@ function get_bike_models() {
 
     $.ajax({
         type : 'GET',
-        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token,
+//        url : '//qa.bajaj.gladminds.co/v1/visualisation-upload-history/?access_token='+user_details.access_token,
         //url : apiURL +'v1/visualisation-upload-history/?access_token='+user_details.access_token,
-//        url : '//192.168.0.57:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token,
+        url : '//192.168.0.59:8000/v1/visualisation-upload-history/?access_token='+user_details.access_token,
         dataType : 'json',
         beforeSend : function () {
             $('body').css('display', 'block');
@@ -94,22 +94,22 @@ function show_data ( data ) {
 
 function review_sbom ( ) {
     $('.review-sbom').click(function (e) {
-        $('#review-window').modal('show');
         var id = history_id = $(this).closest('tr').find('td:first').text();
 console.log(history_id);
 
         $.ajax({
             type : 'GET',
            // url : "//qa.bajaj.gladminds.co/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
-            url : "//192.168.0.62:8000/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
+            url : "//192.168.0.59:8000/v1/bom-visualizations/preview-sbom/"+id+"/?access_token="+user_details.access_token,
             dataType : 'json',
+	    beforeSend: function () {
+                showLoading();
+	    }, 
             success : function(data, status) {
                 console.log(data)
                 $('#sbom_details').text('');
                 $('.sbom-img' ).html('');
-                ss = data ;
                 show_sbom ( data );
-                //preload_assets (data);
             },
             error : function(e) {
                 console.log(e);
@@ -118,80 +118,54 @@ console.log(history_id);
     }); 
 }
 
-function preload_assets ( data ) {
-    var queue = new createjs.LoadQueue();
-    queue.installPlugin(createjs.Sound);
-    queue.on("complete", handleComplete, this);
-    queue.loadFile({id:"sound", src:"http://path/to/sound.mp3"});
-    queue.loadManifest([
-     {id: "myImage", src:"path/to/myImage.jpg"}
-    ]);
-    function handleComplete() {
-     var image = queue.getResult("myImage");
-     document.body.appendChild(image);
-    }
-}
-
 function show_sbom ( data ) {
-   $('.tab-body').text('');
-   $('.tab-body').html('');
-   $([data.plate_image]).preload(); 
+    $('.tab-body').text('');
+    $('.tab-body').html('');
+
     var str = '<img border="0" usemap="#FPMap0" src="'+data.plate_image+'" usemap="#FPMap0">';
 
-    $('.sbom-img' ).html(str);
+    $('.sbom-img-block' ).html(str);
     $('#FPMap0').append('');
 
     for ( var i = 0; i < data.plate_part_details.length; i++ ) {
-        var remarks = data.plate_part_details[i].remarks || '--';
-        var co_ordinates = "'"+data.plate_part_details[i].x_coordinate + ',';
-        co_ordinates += data.plate_part_details[i].y_coordinate + ',' + data.plate_part_details[i].z_coordinate + "'";
+        s = data.plate_part_details[i].x_coordinate+', '+data.plate_part_details[i].y_coordinate;
+        s += ', ' +data.plate_part_details[i].z_coordinate;
 
-            var s;
-            for ( var j = 0; j < data.plate_part_details[i].x_coordinate.length; j++ ) {
-                s = data.plate_part_details[i].x_coordinate[j]+', '+data.plate_part_details[i].y_coordinate[j];
-                s += ', ' +data.plate_part_details[i].z_coordinate[j];
-                $('#FPMap0').append('<area href="#'+data.plate_part_details[i].part_href+'" shape="circle" coords="'+s+'">');
-            }
+        var map = '<area href="#'+data.plate_part_details[i].part_href+'" shape="circle" coords="'+s+'">';
+        $("#FPMap0").append(map);
 
-        
-        str = '<tr class="grid table-squidheadlink '+data.plate_part_details[i].part_href+'">';
-        str += '<td class="slNo">'+data.plate_part_details[i].serial_number +'</td>';
+        var remarks = data.plate_part_details[i].remarks || "--";
+
+        str = '<tr class="table-squidheadlink '+data.plate_part_details[i].part_href+'">';
+        str += '<td class="slNo">'+data.plate_part_details[i].serial_number+'</td>';
         str += '<td class="part_no">'+data.plate_part_details[i].part_number+'</td>';
         str += '<td class="description">'+data.plate_part_details[i].description+'</td>';
         str += '<td class="qty1">'+data.plate_part_details[i].quantity+'</td>';
         str += '<td class="remks">'+remarks +'</td>';
         str += '</tr>';
-                
-        $('#sbom_details').append(str);
-    }
 
+        $(".tabData_body").append(str)
+    }
     start_mapping();
 
     $('#Approved').bind('click', function(e) {
+       $('#Approved').unbind('click');
        change_plate_status(e); 
     });
     
     $('#Rejected').bind('click', function (e) {
+       $('#Rejected').unbind('click');
        change_plate_status(e); 
     });
-
 
     $('.scrollTable').scrolltable({
         stripe: true,
         oddClass: 'odd',
         setWidths: true,
-        maxHeight: 100
+        maxHeight: 300
     });
-
-
-	 $('#Approved').bind('click', function(e) {
-       change_plate_status(e);
-    });
-
-    $('#Rejected').bind('click', function (e) {
-       change_plate_status(e);
-    });
-
+    $('#review-window').modal('show');
+    hideLoading();
 }
 
 function getPermission () {
@@ -214,7 +188,7 @@ var start_mapping = function() {
     // Assign Class to image
     $('[usemap="#FPMap0"]').addClass('map');
 
-    $.each(areaTags, function( index, value ) { //console.log(index) $(areaTags[index]).attr("data-maphilight",'{"strokeColor":"6633FF", "strokeWidth":2, "fillColor":"99CCFF", "fillOpacity":0.2}').attr("class","squidheadlink");
+    $.each(areaTags, function( index, value ) { $(areaTags[index]).attr("data-maphilight",'{"strokeColor":"6633FF", "strokeWidth":2, "fillColor":"99CCFF", "fillOpacity":0.2}').attr("class","squidheadlink");
         id = $(areaTags[index]).attr("href");
         id = id.substr(1);
         id = id.replace(/\s/g, '');
@@ -227,30 +201,26 @@ var start_mapping = function() {
     $('.map').maphilight();
     $('.table-squidheadlink').mouseover(function (e) {
         scrollTable = false;
-        highlight_data(this, e, '#FFF' );
+        highlight_data(this, e, '#848484' );
     }).mouseout(function(e) {
         scrollTable=true;
         remove_highlight_data ( this, e);
     }).click(function(e) { e.preventDefault(); });
 
     $('.squidheadlink').mouseover(function(e) {
-        highlight_data(this, e, '#FFF');
+        highlight_data(this, e, '#848484');
         if ( scrollTable ) {
             scroll_if_not_visible(sClass);
         }
     }).mouseout(function(e) {
         remove_highlight_data ( this, e);
     }).click(function(e) { e.preventDefault(); });
-
 }
 
-
 function change_plate_status (e) {
-console.log(e.target.id);
     var data = {
         "status" : e.target.id 
     };
-alert ( e.target.id);
 
     data = JSON.stringify(data);
 
@@ -258,7 +228,7 @@ alert ( e.target.id);
         type : 'POST',
         contentType: 'application/json',
        // url : "//qa.bajaj.gladminds.co/v1/bom-visualizations/change-status/"+history_id+"/?access_token="+user_details.access_token,
-        url : "//192.168.0.62:8000/v1/bom-visualizations/change-status/"+history_id+"/?access_token="+user_details.access_token,
+        url : "//192.168.0.59:8000/v1/bom-visualizations/change-status/"+history_id+"/?access_token="+user_details.access_token,
         dataType : 'json',
         data : data,
         beforeSend : function () {
